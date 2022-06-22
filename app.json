@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/home/phone",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/me/me"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/phone",
+        "text": "通讯录",
+        "iconPath": "/icons/shouye01.png",
+        "selectedIconPath": "/icons/shouye02.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "icons/wode01.png",
+        "selectedIconPath": "/icons/wode02.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

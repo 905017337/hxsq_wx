@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+  "van-index-anchor": "@vant/weapp/index-anchor/index",
+  "van-grid": "@vant/weapp/grid/index",
+  "van-cell": "@vant/weapp/cell/index",
+  "van-cell-group": "@vant/weapp/cell-group/index",
+  "van-grid-item": "@vant/weapp/grid-item/index",
+  "van-tabbar": "@vant/weapp/tabbar/index",
+  "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+  "l-tab-bar":"/component/tab-bar/index"
+  }
+}
