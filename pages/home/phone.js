@@ -1,4 +1,5 @@
-// pages/home/home.js
+// pages/phone/phone.js
+import { phoneBookList,phoneTypeList } from '../../utils/api/phone'
 Page({
 
   /**
@@ -50,7 +51,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    phoneBookList().then(res=>{
+      console.log(res);
+    })
+    phoneTypeList().then(res=>{
+      console.log(res);
+    })
   },
 
   /**
