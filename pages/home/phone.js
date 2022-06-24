@@ -1,5 +1,5 @@
 // pages/phone/phone.js
-import { phoneBookList,phoneTypeList } from '../../utils/api/phone'
+import { phoneBookList,phoneuserList,phoneTypeList } from '../../utils/api/phone'
 Page({
 
   /**
@@ -7,7 +7,8 @@ Page({
    */
   data: {
     active: 0,
-    indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    TypeList: [],
+    userList:[],
     value: '',
     list: [
       {
@@ -32,8 +33,10 @@ Page({
   },
 
   onckick(e){
-    console.log(e.currentTarget.dataset.id);
-    console.log("点击");
+    console.log(e.currentTarget.dataset.phone);
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone 
+    })
   },
 
   onChange(e) {
@@ -51,12 +54,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    phoneBookList().then(res=>{
-      console.log(res);
+    var that = this
+    phoneuserList().then(res=>{
+      that.userList = res;
+      that.setData({
+        userList:that.userList
+      })
     })
     phoneTypeList().then(res=>{
-      console.log(res);
+      let TypeList = []
+      for(var index in res){
+        TypeList.push(res[index].name)
+      }
+      console.log(TypeList);
+      that.setData({
+        TypeList:TypeList
+      })
     })
+   
   },
 
   /**

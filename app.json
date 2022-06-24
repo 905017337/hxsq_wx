@@ -3,7 +3,8 @@
     "pages/home/phone",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/home/add/addPhone"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff"

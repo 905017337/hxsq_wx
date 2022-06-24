@@ -1,4 +1,66 @@
-<!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<!--用户信息-->
 
-<l-tab-bar list="{{list}}" />
+<view class="top">
+  <view class="userInfo">
+    <view class="userInfo-top">
+      <view class="left">
+        <view class="photo">
+          <van-image round width="60" height="60" src="{{userInfo.avatarUrl}}" />
+        </view>
+        <view class="username">
+          {{userInfo.nickName}}
+        </view>
+      </view>
+      <view  wx:if="{{!isAuthorization}}" class="right" open-type="getUserInfo" bindtap="getUserProfile">微信登录</view>
+    </view>
+    <!-- <view class="userInfo-bottom">
+      <view class="left">
+        <view>0</view>
+        <view>优惠券</view>
+      </view>
+      <view class="right">
+        <van-icon class-prefix="iconfont" size="1.25em" name="bangzhu1" />
+      </view>
+      <view>关于我们</view>
+    </view> -->
+  </view>
+</view>
+<!-- 订单 -->
+<!-- <view class="order">
+  <view class="title">我的订单</view>
+  <view>
+    <van-grid icon-size="30" column-num="4" border="{{ false }}">
+      <van-grid-item bind:click="onToOrder" id="0" icon-prefix="iconfont" icon="daizhifu" text="待支付" />
+      <van-grid-item bind:click="onToOrder" id="1" icon-prefix="iconfont" icon="daifahuo" text="待发货" />
+      <van-grid-item bind:click="onToOrder" id="2" icon-prefix="iconfont" icon="daishouhuo" text="已发货" />
+      <van-grid-item bind:click="onToOrder" id="3" icon-prefix="iconfont" icon="yiwancheng" text="已完成" />
+    </van-grid>
+  </view>
+</view> -->
+
+<!-- 功能 -->
+<view class="menu">
+  <!-- <van-cell title="收货地址" bindtap="chooseAddress" is-link>
+    <view style="margin-right:10rpx" slot="icon">
+      <van-icon class-prefix="iconfont" name="yiwancheng" />
+    </view>
+  </van-cell>
+  <van-cell title="优惠券" bindtap="CouponsPopup" is-link>
+    <view style="margin-right:10rpx" slot="icon">
+      <van-icon class-prefix="iconfont" name="youhuiquan" />
+    </view>
+  </van-cell> -->
+  <van-cell title="添加联系人" is-link>
+    <view style="margin-right:10rpx" slot="icon">
+      <van-icon class-prefix="iconfont" name="bangzhu" />
+    </view>
+  </van-cell>
+  <van-cell title="关于" is-link>
+    <view style="margin-right:10rpx" slot="icon">
+      <van-icon class-prefix="iconfont" name="bangzhu" />
+    </view>
+  </van-cell>
+</view>
+<view>
+  <l-tab-bar list="{{list}}" />
+</view>

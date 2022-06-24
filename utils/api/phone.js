@@ -17,9 +17,17 @@ module.exports.phoneBookList = function list(data={}){
   })
 }
 /**
- * 联系人类型
+ * 联系人列表
  * @param {} data 
  */
+module.exports.phoneuserList = function list(data={}){
+  data.notoken = true
+  return request({
+    url: '/phone-type/phoneBootlist',
+    method: 'get',
+    data
+  })
+}
 module.exports.phoneTypeList = function list(data={}){
   data.notoken = true
   return request({

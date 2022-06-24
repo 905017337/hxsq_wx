@@ -1,5 +1,13 @@
 {
   "usingComponents": {
-    "l-tab-bar":"/component/tab-bar/index"
-  }
+    "van-image": "@vant/weapp/image/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "l-tab-bar":"/component/tab-bar/index",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "我的",
+  "navigationBarBackgroundColor": "#bdf1e1"
 }
