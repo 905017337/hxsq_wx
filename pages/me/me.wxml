@@ -1,3 +1,42 @@
+<van-notify id="van-notify" />
+<van-dialog
+  use-slot
+  title="添加联系人"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  bind:confirm="addconfirm"
+>
+<van-cell-group>
+  <van-field
+    model:value="{{name}}"
+    label="姓名"
+    required
+    placeholder="请输入联系人姓名"
+    border="{{ false }}"
+  />
+  <van-field
+    model:value="{{phone}}"
+    label="手机号"
+    placeholder="请输入联系人手机号"
+    required
+    border="{{ false }}"
+  />
+  <van-field
+    model:value="{{ userType }}"
+    label="维修类型"
+    placeholder="请输入维修类型"
+    required
+    border="{{ false }}"
+  />
+  <van-field
+    model:value="{{ address }}"
+    label="地址"
+    placeholder="请输入维修人员地址"
+    border="{{ false }}"
+  />
+</van-cell-group>
+</van-dialog>
 <!--用户信息-->
 
 <view class="top">
@@ -5,13 +44,13 @@
     <view class="userInfo-top">
       <view class="left">
         <view class="photo">
-          <van-image round width="60" height="60" src="{{userInfo.avatarUrl}}" />
+          <van-image round width="60" height="60" src="{{userInfo.avaurl}}" />
         </view>
         <view class="username">
           {{userInfo.nickName}}
         </view>
       </view>
-      <view  wx:if="{{!isAuthorization}}" class="right" open-type="getUserInfo" bindtap="getUserProfile">微信登录</view>
+      <view  wx:if="{{isAuthorization}}" class="right" open-type="getUserInfo" bindtap="getUserProfile">微信登录</view>
     </view>
     <!-- <view class="userInfo-bottom">
       <view class="left">
@@ -50,12 +89,12 @@
       <van-icon class-prefix="iconfont" name="youhuiquan" />
     </view>
   </van-cell> -->
-  <van-cell title="添加联系人" is-link>
+  <van-cell title="添加联系人" bindtap="addUser" is-link>
     <view style="margin-right:10rpx" slot="icon">
       <van-icon class-prefix="iconfont" name="bangzhu" />
     </view>
   </van-cell>
-  <van-cell title="关于" is-link>
+  <van-cell title="关于" bindtap="about" is-link>
     <view style="margin-right:10rpx" slot="icon">
       <van-icon class-prefix="iconfont" name="bangzhu" />
     </view>
@@ -64,3 +103,4 @@
 <view>
   <l-tab-bar list="{{list}}" />
 </view>
+<van-dialog id="van-dialog" />

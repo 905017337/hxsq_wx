@@ -36,3 +36,24 @@ module.exports.phoneTypeList = function list(data={}){
     data
   })
 }
+
+module.exports.addPhone = function list(data={}){
+  data.notoken = true
+  return request({
+    url: '/phone-book/addPhone',
+    method: 'post',
+    data
+  })
+}
+/**
+ * 首页搜索
+ * @param {*} data 
+ */
+module.exports.search = function list(data={}){
+  data.notoken = true
+  return request({
+    url: '/phone-type/search',
+    method: 'get',
+    data
+  })
+}

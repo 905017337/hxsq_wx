@@ -22,8 +22,8 @@ module.exports.login = function login(data={}){
  */
 module.exports.userInfo = function userInfo(data={}){
   return request({
-    url: '/wx-user/Info',
-    method: 'post',
+    url: '/wx-user/info',
+    method: 'get',
     data
   })
 }
@@ -34,7 +34,7 @@ module.exports.userInfo = function userInfo(data={}){
 module.exports.authorization = function authorization(data={}){
   data.notoken = true
   return request({
-    url: '/jm-authority-center/wx/authorization',
+    url: '/wx-user/authorization',
     method: 'post',
     data
   })

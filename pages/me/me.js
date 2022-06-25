@@ -1,12 +1,20 @@
 // pages/me/me.js
 const app = getApp()
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify'
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 import { authorization } from '../../utils/api/auth'
+import { addPhone } from '../../utils/api/phone'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    name:'',
+    phone:'',
+    address:'',
+    userType:'',
+    show: false,
     userInfo: {
       nickName: '葫芦娃',
       avatarUrl: "/images/tour.png"
@@ -31,6 +39,76 @@ Page({
       }
     ]
   },
+
+  /**
+   * 关于
+   */
+  about(){
+    Dialog.alert({
+      title: '联系方式',
+      message: '13784989002',
+    }).then(() => {
+      // on close
+    });
+  },
+   addconfirm(){
+    var that = this
+    var name  =that.data.name;
+    var phone  =that.data.phone;
+    var userType  =that.data.userType;
+    if(name == null || name == ''){
+      Notify({ type: 'warning', message: '请输入姓名' });
+      this.setData({
+        show:true
+      })
+    }
+    else if(phone == null || phone == ''){
+      this.setData({
+        show:true
+      })
+      Notify({ type: 'warning', message: '请输入手机号' });
+    }
+    else if(userType == null || userType == ''){
+      this.setData({
+        show:true
+      })
+      Notify({ type: 'warning', message: '请输入维修类型' });
+    }else{
+      this.setData({ show: false });
+    } 
+    var newUser = {
+      name:that.data.name,
+      phone:that.data.phone,
+      userType:that.data.userType,
+      address:that.data.address
+    }
+    console.log(that.data.show);
+    if(that.data.show ==false){
+        addPhone(newUser).then(res=>{
+          console.log(res);
+          that.data.name = '';
+          that.data.phone = '';
+          that.data.userType = '';
+          that.data.address = '';
+        })
+    }
+  },
+  onClose() {
+    this.setData({ show: false });
+    
+  },
+  addUser(){
+    var that = this
+    that.setData({
+      show:true
+    })
+  },
+  getUserInfo(event) {
+    console.log(event.detail);
+  },
+
+ 
+
 //获取用户信息授权登录
 getUserProfile(e) {
   var code = '';
@@ -62,18 +140,18 @@ getUserProfile(e) {
 },
 // 配置收货地址
 chooseAddress() {
-  wx.chooseAddress({
-    success(res) {
-      console.log(res.userName)
-      console.log(res.postalCode)
-      console.log(res.provinceName)
-      console.log(res.cityName)
-      console.log(res.countyName)
-      console.log(res.detailInfo)
-      console.log(res.nationalCode)
-      console.log(res.telNumber)
-    }
-  })
+  // wx.chooseAddress({
+  //   success(res) {
+  //     console.log(res.userName)
+  //     console.log(res.postalCode)
+  //     console.log(res.provinceName)
+  //     console.log(res.cityName)
+  //     console.log(res.countyName)
+  //     console.log(res.detailInfo)
+  //     console.log(res.nationalCode)
+  //     console.log(res.telNumber)
+  //   }
+  // })
 },
 //优惠券列表
 CouponsPopup() {
@@ -99,29 +177,33 @@ onLoad: function (options) {
   var _that = this
   var userInfo = ''
   var isAuthorization = false
-  // 查看是否授权
-  wx.getSetting({
-    success(res) {
-      console.log(res);
-      if (res.authSetting['scope.userInfo']) {
-        userInfo = wx.getStorageSync('userInfo')
-        console.log(userInfo);
-        isAuthorization = true
-      } else {
-        console.log("暂未授权");
-        wx.getUserInfo({
-          success: function (res) {
-            userInfo = res.userInfo
-
-          }
-        })
-      }
-      _that.setData({
-        userInfo: userInfo,
-        isAuthorization:isAuthorization
-      })
-    }
+  userInfo = wx.getStorageSync('userInfo')
+  _that.setData({
+    userInfo: userInfo
   })
+  // 查看是否授权
+  // wx.getSetting({
+  //   success(res) {
+  //     console.log(res);
+  //     if (res.authSetting['scope.userInfo']) {
+        
+  //       console.log(userInfo);
+  //       isAuthorization = true
+  //     } else {
+  //       console.log("暂未授权");
+  //       wx.getUserInfo({
+  //         success: function (res) {
+  //           userInfo = res.userInfo
+
+  //         }
+  //       })
+  //     }
+  //     _that.setData({
+  //       userInfo: userInfo,
+  //       isAuthorization:isAuthorization
+  //     })
+  //   }
+  // })
 },
 
 /**

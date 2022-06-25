@@ -1,25 +1,23 @@
+<van-toast id="van-toast" />
+<van-sticky>
 <view>
-  <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot background="#bdf1e1" bind:change="onChange"  shape="round" bind:search="onSearch">
+  <van-search node:value="{{ value }}" placeholder="请输入搜索的维修人员姓名" use-action-slot background="#bdf1e1" bind:change="onChange"  shape="round" bind:search="onSearch">
     <view slot="action" bind:tap="onClick">搜索</view>
   </van-search>
 </view>
 
-<view>
-
   <van-grid>
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="contact" bindtap="onclick" data-name = '水暖工' text="水暖工" />
+    <van-grid-item icon="contact"  bindtap="onclick" data-name = '空调维修'  text="空调维修" />
+    <van-grid-item icon="contact"  bindtap="onclick" data-name = '门窗维修'  text="门窗维修" />
+    <van-grid-item icon="contact"  bindtap="onclick" data-name = '厨房维修'  text="厨房维修" />
+    <van-grid-item icon="contact"  bindtap="onclick" data-name = '开锁'  text="开锁" />
+    <van-grid-item icon="photo-o"  text="暂无" />
+    <van-grid-item icon="photo-o"  text="暂无" />
+    <van-grid-item icon="photo-o"  text="暂无" />
   </van-grid>
-</view>
-
+</van-sticky>
 <view>
-  <van-index-bar index-list="{{ TypeList }}">
     <view wx:for="{{userList}}" wx:key="item"  wx:for-index="index" >
       <view>
         <van-index-anchor index="{{item.name}}">123</van-index-anchor>
@@ -28,10 +26,7 @@
         </view>
       </view>
     </view>
-
-
-    ...
-  </van-index-bar>
+    
 </view>
 
 <l-tab-bar list="{{list}}" />

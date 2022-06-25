@@ -7,7 +7,10 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-    "l-tab-bar": "/component/tab-bar/index"
+    "l-tab-bar": "/component/tab-bar/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-sticky": "@vant/weapp/sticky/index"
   },
   "navigationBarTitleText": "首页",
   "navigationBarBackgroundColor": "#bdf1e1"

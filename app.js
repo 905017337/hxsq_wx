@@ -18,9 +18,14 @@ App({
         login({
           code: res.code,
         }).then(res => {
+          console.log(res);
           wx.setStorage({
             key:"token",
             data:res.token
+          })
+          wx.setStorage({
+            key:"userInfo",
+            data:res
           })
           // userInfo().then(res=>{
           //   console.log(res);

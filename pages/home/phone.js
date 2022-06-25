@@ -1,5 +1,6 @@
 // pages/phone/phone.js
-import { phoneBookList,phoneuserList,phoneTypeList } from '../../utils/api/phone'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import { search,phoneuserList,phoneTypeList } from '../../utils/api/phone'
 Page({
 
   /**
@@ -25,7 +26,19 @@ Page({
       }
     ]
   },
-
+  onclick(e){
+    var that = this
+    console.log(e.currentTarget.dataset.name);
+    let value = {
+      name : e.currentTarget.dataset.name
+    }
+    phoneuserList(value).then(res=>{
+      that.userList = res;
+      that.setData({
+        userList:that.userList
+      })
+    })
+  },
 //tabbar 切换
   onChange(event) {
     // event.detail 的值为当前选中项的索引
@@ -45,10 +58,18 @@ Page({
     });
   },
   onSearch() {
-    Toast('搜索' + this.data.value);
+    var that = this
+    Toast('搜索' + that.data.value);
   },
   onClick() {
-    Toast('搜索' + this.data.value);
+    var that = this
+    Toast('搜索' + that.data.value);
+    search({name:that.data.value}).then(res=>{
+      console.log(res);
+      that.setData({
+        userList:res
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面加载
